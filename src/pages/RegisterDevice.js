@@ -47,7 +47,7 @@ const RegisterDevice = () => {
 
   const handleSubmit = async (e) => {
     console.log("SUbmit");
-    console.log(values);
+
     e.preventDefault();
     let j = await function1();
     values.pushSubscription = j;
@@ -55,6 +55,7 @@ const RegisterDevice = () => {
       method: "POST",
       body: JSON.stringify(values),
     });
+    console.log(values);
   };
 
   return (

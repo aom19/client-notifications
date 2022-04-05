@@ -8,7 +8,7 @@ export const DELETE_PARTNERS = "DELETE_PARTNERS";
 export const fetchPartners = () => {
   return async (dispatch) => {
     axios
-      .get("http://localhost:8000/partners")
+      .get("https://notification-push.herokuapp.com/partners")
       .then((res) => {
         console.log(res.data);
         const fetchedPartners = res.data;
@@ -43,7 +43,7 @@ export const createPartner = (
       partnerImage,
     };
     axios
-      .post("http://localhost:8000/partners/add", formData)
+      .post("https://notification-push.herokuapp.com/partners/add", formData)
       .then((res) => {
         console.log(res.data);
 
@@ -73,7 +73,10 @@ export const editPartner = (
     };
 
     axios
-      .put(`http://localhost:8000/partners/update/${id}`, formData)
+      .put(
+        `https://notification-push.herokuapp.com/partners/update/${id}`,
+        formData
+      )
       .then((res) => {
         console.log(res.data);
         dispatch({
@@ -89,7 +92,7 @@ export const editPartner = (
 export const deletePartner = (id) => {
   return async (dispatch) => {
     axios
-      .delete(`http://localhost:8000/partners/${id}`)
+      .delete(`https://notification-push.herokuapp.com/partners/${id}`)
       .then((res) => {
         console.log(res.data);
         dispatch({

@@ -49,7 +49,6 @@ const RegisterDevice = () => {
   const handleSubmit = async (e) => {
     console.log("SUbmit");
 
-    e.preventDefault();
     let j = await function1();
     values.pushSubscription = await j;
     let data = JSON.stringify(values);

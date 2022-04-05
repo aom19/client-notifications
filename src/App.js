@@ -29,10 +29,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="list" element={<ListDevice />} />
-          <Route path="create" element={<RegisterDevice />} />
-        </Route>
+        <Route exact path="/" element={<Home />} />
+        <Route path="list" element={<ListDevice />} />
+        <Route path="create" element={<RegisterDevice />} />
       </Routes>
     </div>
   );

@@ -63,7 +63,7 @@ const RegisterDevice = () => {
     //   .catch((err) => console.log(err));
 
     console.log(values);
-    await axios.post("https://notification-push.herokuapp.com/devices/add", {
+    axios.post("https://notification-push.herokuapp.com/devices/add", {
       values,
     });
 

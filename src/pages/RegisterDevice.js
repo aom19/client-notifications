@@ -27,19 +27,6 @@ const RegisterDevice = () => {
       [name]: value,
     });
   };
-
-  const handleSubmit = async (e) => {
-    console.log("SUbmit");
-    console.log(values);
-    e.preventDefault();
-    let j = await function1();
-    values.pushSubscription = j;
-    await fetch("https://notification-push.herokuapp.com/devices/add", {
-      method: "POST",
-      body: JSON.stringify(values),
-    });
-  };
-
   const function1 = async () => {
     let sw = await navigator.serviceWorker.ready;
     let push = await sw.pushManager.subscribe({
@@ -57,6 +44,19 @@ const RegisterDevice = () => {
     // });
     return push;
   };
+
+  const handleSubmit = async (e) => {
+    console.log("SUbmit");
+    console.log(values);
+    e.preventDefault();
+    let j = await function1();
+    values.pushSubscription = j;
+    await fetch("https://notification-push.herokuapp.com/devices/add", {
+      method: "POST",
+      body: JSON.stringify(values),
+    });
+  };
+
   return (
     <div>
       <MainNavigation />

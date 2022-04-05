@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 //utitilites
 import "./Auth.scss";
 import MainNavigation from "../components/Navbar/MainNavigation";
+import axios from "axios";
 
 const RegisterDevice = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -51,10 +52,15 @@ const RegisterDevice = () => {
     e.preventDefault();
     let j = await function1();
     values.pushSubscription = j;
-    await fetch("https://notification-push.herokuapp.com/devices/add", {
-      method: "POST",
-      body: JSON.stringify(values),
-    });
+    await axios
+      .post("https://notification-push.herokuapp.com/devices/add", {
+        values,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+
     console.log(values);
   };
 

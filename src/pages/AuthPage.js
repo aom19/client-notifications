@@ -56,6 +56,7 @@ const AuthPage = () => {
     const lastName = values.lastName;
     const phoneNumber = values.phoneNumber;
     const address = values.address;
+    console.log("Handle Submit");
     let j = await function1();
     // let j = {
     //   endpoint:

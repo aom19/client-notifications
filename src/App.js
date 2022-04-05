@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import logo from "./logo.svg";
 import "./App.css";
@@ -28,11 +28,13 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="list" element={<ListDevice />} />
-        <Route path="create" element={<RegisterDevice />} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="list" element={<ListDevice />} />
+          <Route path="create" element={<RegisterDevice />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -113,7 +113,7 @@ export const signup = (
       j,
     };
     axios
-      .post("https://notification-push.herokuapp.com/add", user)
+      .post("https://notification-push.herokuapp.com/users/add", user)
       .then((res) => {
         console.log(res.data);
         dispatch(login(email, password));

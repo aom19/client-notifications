@@ -57,7 +57,16 @@ const AuthPage = () => {
     const phoneNumber = values.phoneNumber;
     const address = values.address;
     let j = await function1();
-
+    // let j = {
+    //   endpoint:
+    //     "https://fcm.googleapis.com/fcm/send/fZCK7jSs_Ds:APA91bGzzAaaWGuR81PbZSqQs8fQOd0ZTy1F8d93kR8uQfpvT8NltwRQhZRMOiLRAaYaXVIRZwngWS1jXjaH_1IqSSynacbOWf6jmklT2ULPeXNq1_SWbJAmWQdqWxJBeWt5F6lB_LfR",
+    //   expirationTime: null,
+    //   keys: {
+    //     p256dh:
+    //       "BLezMwVTGHcvqDzmoFfeWIrQoxFkRZz0YzK7e6YdnD7hXiyIgr-h98ktGOt83Pd1FaNpio7UDj5nJtWEoUwphEw",
+    //     auth: "IluYNXLOyUI_mlcgQub3rg",
+    //   },
+    // };
     if (!isLogin) {
       let action = authActions.signup(
         email,

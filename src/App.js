@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
 
 import logo from "./logo.svg";
 import "./App.css";
@@ -27,15 +32,13 @@ function App() {
   useEffect(() => {}, []);
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="list" element={<ListDevice />} />
-          <Route path="create" element={<RegisterDevice />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/list" component={ListDevice} />
+        <Route path="/create" component={RegisterDevice} />
+      </Switch>
+    </Router>
   );
 }
 

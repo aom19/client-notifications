@@ -51,7 +51,7 @@ const RegisterDevice = () => {
 
     e.preventDefault();
     let j = await function1();
-    values.pushSubscription = j;
+    values.pushSubscription = await j;
     let data = JSON.stringify(values);
     // await axios
     //   .post("https://notification-push.herokuapp.com/devices/add", {
@@ -77,7 +77,7 @@ const RegisterDevice = () => {
         <div></div>
         <div className="container">
           <div className="log-form">
-            <form className="col-md-12">
+            <form className="col-md-12" onSubmit={handleSubmit}>
               <h2>{isLogin ? "Please  Sign In" : "Please Sign Up"}</h2>
               <hr className="divisor" />
               {isLogin ? (

@@ -19,7 +19,7 @@ const ListDevice = () => {
     // await fetch("http://localhost:8000/devices/")
     //   .then((response) => response.json())
     //   .then((data) => setDevices(data));
-    await fetch(" https://notification-push.herokuapp.com/devices")
+    await fetch("https://notification-push.herokuapp.com/devices")
       .then((response) => response.json())
       .then((data) => setDevices(data));
   };

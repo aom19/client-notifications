@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MainNavigation from "../components/Navbar/MainNavigation";
+import MainNavigation from "../components/navigation/MainNavigation";
 import { Button } from "react-bootstrap";
 import {
   Table,
@@ -19,9 +19,13 @@ const ListDevice = () => {
     // await fetch("http://localhost:8000/devices/")
     //   .then((response) => response.json())
     //   .then((data) => setDevices(data));
-    await fetch("https://notification-push.herokuapp.com/devices")
-      .then((response) => response.json())
-      .then((data) => setDevices(data));
+    axios
+      .get("https://notification-push.herokuapp.com/users/list")
+      .then((res) => {
+        console.log(res.data);
+        setDevices(res.data);
+      })
+      .catch((err) => console.log(err));
   };
   useEffect(() => {
     fetchDevices();
@@ -29,7 +33,7 @@ const ListDevice = () => {
   const handleClick = async (x) => {
     console.log(x);
     axios.post(
-      `https://notification-push.herokuapp.com/devices/notificate/${x._id}`,
+      `https://notification-push.herokuapp.com/users/notificate/${x._id}`,
       {
         id: x._id,
       }

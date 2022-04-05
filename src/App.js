@@ -1,44 +1,51 @@
 import React, { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import logo from "./logo.svg";
-import "./App.css";
-import RegisterDevice from "./pages/RegisterDevice";
-import ListDevice from "./pages/ListDevice";
+//pages
+import Admin from "./pages/Admin";
 import Home from "./pages/Home";
+import Partners from "./pages/Partners";
+import Contact from "./pages/Contact";
+import AuthPage from "./pages/AuthPage";
+
+//components
+import Navbar from "./components/navigation/MainNavigation";
+
+import { signIn } from "./redux/actions/auth";
+
+import "./App.css";
+import ListDevice from "./pages/ListDevice";
 
 function App() {
-  const function1 = async () => {
-    let sw = await navigator.serviceWorker.ready;
-    let push = await sw.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationServerKey:
-        "BHcJ6sw5Ay67VobEVIhlEVrfvHqDFMnyzOLG9Vz8d1CRCYBdyCzt9aoVYdZq1feEwll9gG67g15uYMe-ghN7cVU",
-    });
+  const dispatch = useDispatch();
 
-    await fetch("http://localhost:8000/devices/add", {
-      method: "POST",
-      body: JSON.stringify(push),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
-  };
-  useEffect(() => {}, []);
+  useEffect(async () => {
+    await dispatch(signIn());
+  }, []);
+
+  const token = useSelector((state) => state.user);
+  console.log(token);
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/list" component={ListDevice} />
-        <Route exact path="/create" component={RegisterDevice} />
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <>
+        <Navbar />
+        <>
+          <Switch>
+            {token?.token && <Redirect from="/login" to="/" exact />}
+            <Route path="/" component={Home} exact />
+
+            <Route path="/partners" component={Partners} exact />
+            <Route path="/contact" component={Contact} exact />
+            <Route path="/login" component={AuthPage} exact />
+            <Route path="/admin" component={Admin} exact />
+            <Route path="/list" component={ListDevice} exact />
+            {/* {token?.token && <Route path="/admin" component={Admin} exact />} */}
+          </Switch>
+        </>
+      </>
+    </BrowserRouter>
   );
 }
 

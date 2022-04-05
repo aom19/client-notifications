@@ -29,47 +29,6 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!-- <button onclick="subscribe()">Subscribe</button> -->
-    <!-- <script>
-      // async function subscribe() {
-      //   let sw = await navigator.serviceWorker.ready;
-      //   let push = await sw.pushManager.subscribe({
-      //     userVisibleOnly: true,
-      //     applicationServerKey:
-      //       "BHcJ6sw5Ay67VobEVIhlEVrfvHqDFMnyzOLG9Vz8d1CRCYBdyCzt9aoVYdZq1feEwll9gG67g15uYMe-ghN7cVU",
-      //   });
-
-      //   await fetch("http://localhost:8000/devices/add", {
-      //     method: "POST",
-      //     body: JSON.stringify(push),
-      //     headers: {
-      //       "content-type": "application/json",
-      //     },
-      //   });
-      // }
-      if ("serviceWorker" in navigator) {
-        addEventListener("load", async () => {
-          let sw = await navigator.serviceWorker.register("./sw.js");
-
-          // const subscription = await register.pushManager.subscribe({
-          //   userVisibleOnly: true,
-          //   applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
-          // });
-          // console.log(subscription);
-          console.log("Push Registered...");
-
-          // Send Push Notification
-          console.log("Sending Push...");
-          // await fetch("/devices/add", {
-          //   method: "POST",
-          //   body: JSON.stringify(push),
-          //   headers: {
-          //     "content-type": "application/json",
-          //   },
-          // });
-        });
-      }
-    </script> -->
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

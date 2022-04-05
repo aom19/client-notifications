@@ -47,11 +47,12 @@ const RegisterDevice = () => {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     console.log("SUbmit");
 
     let j = await function1();
     values.pushSubscription = await j;
-    let data = JSON.stringify(values);
+
     // await axios
     //   .post("https://notification-push.herokuapp.com/devices/add", {
     //     data,
@@ -61,7 +62,6 @@ const RegisterDevice = () => {
     //   })
     //   .catch((err) => console.log(err));
 
-    console.log(values);
     axios.post("https://notification-push.herokuapp.com/devices/add", {
       values,
     });
@@ -176,7 +176,11 @@ const RegisterDevice = () => {
                 >
                   Switch to {isLogin ? "Signup" : "Login"}
                 </button>
-                <button type="submit" className="btn" onClick={handleSubmit}>
+                <button
+                  type="submit"
+                  className="btn"
+                  onClick={(e) => handleSubmit(e)}
+                >
                   Submit
                 </button>
               </div>

@@ -35,8 +35,8 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/list" component={ListDevice} />
-        <Route path="/create" component={RegisterDevice} />
+        <Route exact path="/list" component={ListDevice} />
+        <Route exact path="/create" component={RegisterDevice} />
       </Switch>
     </Router>
   );

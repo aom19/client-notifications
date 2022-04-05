@@ -52,14 +52,20 @@ const RegisterDevice = () => {
     e.preventDefault();
     let j = await function1();
     values.pushSubscription = j;
-    await axios
-      .post("https://notification-push.herokuapp.com/devices/add", {
-        values,
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
+    let data = JSON.stringify(values);
+    // await axios
+    //   .post("https://notification-push.herokuapp.com/devices/add", {
+    //     data,
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => console.log(err));
+
+    console.log(values);
+    await axios.post("https://notification-push.herokuapp.com/devices/add", {
+      values,
+    });
 
     console.log(values);
   };
